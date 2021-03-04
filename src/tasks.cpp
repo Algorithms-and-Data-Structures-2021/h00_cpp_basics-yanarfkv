@@ -37,15 +37,14 @@ int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
 
 // Задание 3
 bool copy_2d_array(int **arr_2d_source, int **arr_2d_target, int num_rows, int num_cols) {
-    if (arr_2d_source && arr_2d_target && num_cols > 0 && num_rows > 0) {
-        for (int i = 0; i < num_rows; i++) {
-            for (int j = 0; j < num_cols; j++) {
-                arr_2d_target[i][j] = arr_2d_source[i][j];
-            }
+    if (!arr_2d_target || !arr_2d_source) return false;
+    if (num_rows < 1 || num_cols < 1) return false;
+    for (int i = 0; i < num_rows; i++) {
+        for (int j = 0; j < num_cols; j++) {
+            arr_2d_target[i][j] = arr_2d_source[i][j];
         }
-        return true;
     }
-    return false;
+    return true;
 }
 
 // Задание 4
@@ -81,10 +80,10 @@ int *find_max_element(int *arr, int size) {
             if (*arr > *max) {
                 max = arr;
             }
+            arr+=1;
         }
         return max;
-    }
-    return nullptr;
+    }else return nullptr;
 }
 
 // Задание 7

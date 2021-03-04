@@ -37,14 +37,15 @@ int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
 
 // Задание 3
 bool copy_2d_array(int **arr_2d_source, int **arr_2d_target, int num_rows, int num_cols) {
-    if ((arr_2d_source == nullptr || arr_2d_target == nullptr) && (num_cols < 1 || num_rows < 1))
-        return false;
-    for (int i = 0; i < num_rows; i++) {
-        for (int j = 0; j < num_cols; j++) {
-            arr_2d_target[i][j] = arr_2d_source[i][j];
+    if (arr_2d_source && arr_2d_target && num_cols > 0 && num_rows > 0) {
+        for (int i = 0; i < num_rows; i++) {
+            for (int j = 0; j < num_cols; j++) {
+                arr_2d_target[i][j] = arr_2d_source[i][j];
+            }
         }
+        return true;
     }
-    return true;
+    return false;
 }
 
 // Задание 4
@@ -74,14 +75,16 @@ void reverse_1d_array(int *arr_begin, int *arr_end) {
 
 // Задание 6
 int *find_max_element(int *arr, int size) {
-    int *max = arr;
-    if (arr == nullptr || size < 1) return nullptr;;
-    for (int i = 0; i < size; i++) {
-        if (*arr > *max) {
-            max = arr;
+    if (arr && size > 0) {
+        int *max = arr;
+        for (int i = 0; i < size; i++) {
+            if (*arr > *max) {
+                max = arr;
+            }
         }
+        return max;
     }
-    return max;
+    return nullptr;
 }
 
 // Задание 7
